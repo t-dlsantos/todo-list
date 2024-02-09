@@ -18,23 +18,17 @@
     </header>
 
     <nav class="sidebar">
-        <div class="select-mode">
-            <div class="white-mode mode">
-                <img src="./icons/sun.svg" alt="Sun icon">
-            </div>
-            <div class="dark-mode mode">
-                <img src="./icons/moon.svg" alt="Moon icon">
-            </div>
-        </div>
+        <button class="select-mode" type="button">
+            <img src="./icons/sun.svg" alt="Sun icon">
+            <img src="./icons/moon.svg" alt="Moon icon">
+        </button>
 
         <div class="menu">
             <div class="home menu-section">
                 <h2 class="menu-name">Home</h2>
-                <button class="menu-item selected" type="button"><img src="./icons/inbox.svg"
-                        alt="Inbox icon">Inbox</button>
-                <button class="menu-item" type="button"><img src="./icons/sun-2.svg" alt="Sun icon">Today</button>
-                <button class="menu-item" type="button"><img src="./icons/calendar.svg" alt="Calendar icon">This
-                    week</button>
+                <button class="menu-item selected" id="inbox" type="button"><img src="./icons/inbox.svg" alt="Inbox icon">Inbox</button>
+                <button class="menu-item" id="today" type="button"><img src="./icons/sun-2.svg" alt="Sun icon">Today</button>
+                <button class="menu-item" id="thisweek" type="button"><img src="./icons/calendar.svg" alt="Calendar icon">This week</button>
             </div>
             <div class="projects menu-section">
                 <h2 class="menu-name">Projects</h2>
