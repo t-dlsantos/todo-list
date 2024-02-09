@@ -1,0 +1,23 @@
+.pageTitle {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--text-color);
+}
+
+.addButton {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--text-color);
+}
+
+.icon {
+  fill: var(--text-color);
+}
