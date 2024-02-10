@@ -1,7 +1,8 @@
 .pageTitle {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 900;
   color: var(--text-color);
+  margin-bottom: 24px;
 }
 
 .addButton {
@@ -19,5 +20,67 @@
 }
 
 .icon {
+  fill: var(--text-color);
+}
+
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 2px solid var(--secondary-500);
+  border-radius: 12px;
+  padding: 12px;
+  gap: 8px;
+}
+
+.form-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-color);
+}
+
+textarea {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: var(--text-color);
+  resize: none;
+}
+
+.due-date {
+  margin-bottom: 12px;
+}
+
+.priority {
+  background: none;
+  color: var(--text-color);
+  border: none;
+  margin-bottom: 20px;
+}
+
+.priority:focus {
+  background-color: var(--secondary-500);
+}
+
+.submit-button {
+  background-color: var(--primary-500);
+  color: white;
+  border: none;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.close {
+  position: absolute;
+  right: 16px;
   fill: var(--text-color);
 }
