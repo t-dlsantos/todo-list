@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
-    --primary-500: #E0D1F9;
+    --primary-500: #8749EB;
     --background-color: #1E1E1E;
     --accent: #101010;
     --secondary-500: #525252;
@@ -121,5 +121,5 @@ nav.sidebar { /* Changed from div.sidebar to nav.sidebar */
 .content {
     width: 865px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 48px 90px;
 }

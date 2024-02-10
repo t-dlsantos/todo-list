@@ -9,7 +9,7 @@
     <script src="main.js" defer></script>
 </head>
 
-<body class="">
+<body>
     <header>
         <div class="logo">
             <p class="todo">Todo <span class="list">List</span></p>
@@ -26,7 +26,7 @@
         <div class="menu">
             <div class="home menu-section">
                 <h2 class="menu-name">Home</h2>
-                <button class="menu-item selected" id="inbox" type="button"><img src="./icons/inbox.svg" alt="Inbox icon">Inbox</button>
+                <button class="menu-item" id="inbox" type="button"><img src="./icons/inbox.svg" alt="Inbox icon">Inbox</button>
                 <button class="menu-item" id="today" type="button"><img src="./icons/sun-2.svg" alt="Sun icon">Today</button>
                 <button class="menu-item" id="thisweek" type="button"><img src="./icons/calendar.svg" alt="Calendar icon">This week</button>
             </div>
@@ -39,7 +39,9 @@
     </nav>
 
     <main>
-        <div class="content"></div>
+        <div class="content">
+            <div class="tasks"></div>
+        </div>
     </main>
 </body>
 
