@@ -1,4 +1,5 @@
 import '../css/general.css';
+import { addTaskToInbox, getInboxTasks } from './inbox';
 
 const modal = {
   showModal: () => {
@@ -56,8 +57,18 @@ const modal = {
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();
-      console.log('Formulário enviado!');
+      closure();
+      addTaskToInbox(title.value, description.value, dueDate.value, priority.value);
     });
+
+    close.addEventListener('click', () => {
+      closure();
+    });
+
+    const closure = () => {
+      form.remove();
+      addButton.style.display = 'flex';
+    }
 
     addButton.style.display = 'none';
 
