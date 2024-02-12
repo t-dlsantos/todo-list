@@ -1,10 +1,9 @@
-import Todo from './todo';
+import Task from './task';
 const inboxTasks = [];
 
-const addTaskToInbox = (title, description, dueDate, priority) => {
-  const task = new Todo(title, description, dueDate, priority);
+const addTaskToInbox = (newTask) => {
+  const task = new Task(newTask.title, newTask.description, newTask.dueDate, newTask.priority);
   inboxTasks.push(task);
-  return task;
 }
 
 const getInboxTasks = () => {

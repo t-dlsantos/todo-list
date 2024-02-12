@@ -1,7 +1,9 @@
 import '../css/general.css';
+import display from './display.js';
 import { addTaskToInbox, getInboxTasks } from './inbox';
+import { projectManager } from './projects';
 
-const modal = {
+const modalTask = {
   showModal: () => {
     const addButton = document.querySelector('.addButton');
     const content = document.querySelector('.content');
@@ -32,6 +34,7 @@ const modal = {
     `;
     priority.setAttribute('placeholder', 'Priority');
     priority.classList.add('priority');
+    priority.required = true;
 
     const submitButton = document.createElement('button');
     submitButton.setAttribute('type', 'submit');
@@ -58,7 +61,16 @@ const modal = {
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       closure();
-      addTaskToInbox(title.value, description.value, dueDate.value, priority.value);
+      
+      const newTask = {
+        name: title.value,
+        description: description.value,
+        dueDate: dueDate.value,
+        priority: priority.value
+      }
+      console.log(newTask)
+      addTaskToInbox(newTask);
+      display.addNewTask(newTask);
     });
 
     close.addEventListener('click', () => {
@@ -75,7 +87,6 @@ const modal = {
     content.appendChild(form);
   }
 };
-
 
 const buttonAddTask = () => {
   const create = () => {
@@ -99,19 +110,92 @@ const buttonAddTask = () => {
   
     return button;
   }
-  
-  const popUpForm = () => {
-  }
 
   const eventListener = () => {
     const addButton = document.querySelector(".addButton");
-    
+
     addButton.addEventListener("click", () => {
-      modal.showModal();
+      modalTask.showModal();
     });
   }
 
-  return { create, popUpForm, eventListener };
+  return { create, eventListener };
 }
 
-export { buttonAddTask };
+const modalProject = {
+  showModal() {
+    const addProjectButton = document.querySelector('.add-project');
+    const sidebarProjects = document.querySelector('.projects');
+    const container = document.createElement('div');
+
+    addProjectButton.style.display = 'none';
+
+    const title = document.createElement('input');
+    title.setAttribute('type', 'text');
+    title.setAttribute('placeholder', 'Title *');
+    title.required = true;
+    title.classList.add('form-title');
+
+    const submitButton = document.createElement('button');
+    submitButton.setAttribute('type', 'button');
+    submitButton.textContent = 'Add Project';
+    submitButton.classList.add('submit-button');
+    submitButton.addEventListener("click", () => {
+      projectManager.createProject(title.value);
+      container.remove();
+      addProjectButton.style.display = 'flex';
+      display.addNewProject(title.value);
+    });
+
+    const cancelButton = document.createElement('button');
+    cancelButton.textContent = 'Cancel';
+    cancelButton.classList.add('cancel-button');
+    cancelButton.addEventListener("click", () => {
+      container.remove();
+      addProjectButton.style.display = 'flex';
+    });
+
+    container.appendChild(title);
+    container.appendChild(submitButton);
+    container.appendChild(cancelButton);
+    container.classList.add('form-project');
+
+    sidebarProjects.appendChild(container);
+  }
+}
+
+const buttonAddProject = () => {
+  const addProjectButton = document.querySelector('.add-project');
+
+  const eventListener = () => {
+    addProjectButton.addEventListener("click", () => {
+      modalProject.showModal();
+    });
+  }
+
+  return { eventListener };
+}
+
+const taskItem = (task) => {
+  const container = document.createElement('div');
+  container.classList.add('task-item');
+  container.classList.add(`${task.priority}`);
+  container.innerHTML = `
+    <div class="left">
+      <button class="check ${task.completed ? 'completed' : ''}"></button>
+      <div class="info">
+        <p>${task.name}</p>
+        <p>${task.description}</p>
+      </div>
+    </div>
+    <div class="right">
+      <div class="due-date">${task.dueDate || 'no date'}</div>
+      <div class="task-options"></div>
+    </div>
+  `;
+  
+  return container;
+};
+
+
+export { buttonAddTask, buttonAddProject, taskItem };

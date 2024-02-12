@@ -1,4 +1,4 @@
-.pageTitle {
+.page-title {
   font-size: 28px;
   font-weight: 900;
   color: var(--text-color);
@@ -83,4 +83,52 @@ textarea {
   position: absolute;
   right: 16px;
   fill: var(--text-color);
+}
+
+.cancel-button {
+  background-color: var(--secondary-500);
+  color: white;
+  border: none;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.form-project {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: white;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-color);
+}
+
+.left {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.check {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #ccc;
+  background-color: transparent;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.check.completed {
+  border-color: green; 
 }

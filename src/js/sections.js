@@ -1,18 +1,26 @@
 import '../css/general.css'
-import { buttonAddTask } from './components';
+import { buttonAddProject, buttonAddTask } from './components';
+// import displayTasks from './display';
 
 const createPageContent = (pageTitle) => {
   const content = document.querySelector('.content');
   const title = document.createElement('h1');
 
   title.textContent = pageTitle;
-  title.classList.add('pageTitle');
+  title.classList.add('page-title');
 
   content.textContent = '';
-  content.appendChild(title);
-  content.appendChild(buttonAddTask().create());
+  const tasks = document.createElement('div');
+  tasks.id = 'tasks';
 
+  content.appendChild(title);
+  content.appendChild(tasks);
+  if (pageTitle !== 'Today' && pageTitle !== 'This Week') { 
+    content.appendChild(buttonAddTask().create());
+  }
+  
   buttonAddTask().eventListener();
+  buttonAddProject().eventListener();
 };
 
 const loadInboxPage = () => {
@@ -27,4 +35,8 @@ const loadWeekPage = () => {
   createPageContent('This week');
 };
 
-export { loadInboxPage, loadWeekPage, loadTodayPage };
+const loadProjectPage = (nameProject) => {
+  createPageContent(nameProject);
+}
+
+export { loadInboxPage, loadWeekPage, loadTodayPage, loadProjectPage };
