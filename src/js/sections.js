@@ -1,26 +1,52 @@
-import '../css/general.css'
-import { buttonAddProject, buttonAddTask } from './components';
-// import displayTasks from './display';
+import '../css/general.css';
+import { taskManager } from './task';
+import { projectManager } from './projects';
+import ButtonAddProject from './components/ButtonAddProject';
+import ButtonAddTask from './components/ButtonAddTask';
+import display from './display';
 
 const createPageContent = (pageTitle) => {
   const content = document.querySelector('.content');
-  const title = document.createElement('h1');
-
-  title.textContent = pageTitle;
-  title.classList.add('page-title');
-
+  let tasks;
+  
   content.textContent = '';
-  const tasks = document.createElement('div');
-  tasks.id = 'tasks';
+  content.innerHTML = `
+    <h1 class="page-title">${pageTitle}</h1>
+    <div id="tasks"></div>
+  `;
 
-  content.appendChild(title);
-  content.appendChild(tasks);
-  if (pageTitle !== 'Today' && pageTitle !== 'This Week') { 
-    content.appendChild(buttonAddTask().create());
+   switch(pageTitle) {
+    case 'Inbox': {
+      tasks = taskManager.getInboxTasks();
+      break;
+    }
+    
+    case 'Today': {
+      tasks = taskManager.getTodayTasks();
+      break;
+    }
+
+    case 'This week': {
+      tasks = taskManager.getThisWeekTasks();
+      break;
+    }
+
+    default: {
+      tasks = taskManager.getProjectTasks(pageTitle);
+      break;
+    }
+   }
+
+  if (tasks ) {
+    display.displayAllTasks(tasks);
+  }
+
+  if (pageTitle !== 'Today' && pageTitle !== 'This week') {
+    content.appendChild(ButtonAddTask.create());
+    ButtonAddTask.eventListener(pageTitle);
   }
   
-  buttonAddTask().eventListener();
-  buttonAddProject().eventListener();
+  ButtonAddProject.eventListener();
 };
 
 const loadInboxPage = () => {

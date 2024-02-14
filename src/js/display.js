@@ -1,26 +1,39 @@
-import { taskItem } from "./components";
+import TaskItem  from "./components/TaskItem";
 import { loadProjectPage } from "./sections";
 
-const display =(() => {
-  const addNewProject = (nameProject) => {
+const display = (() => {
+  const displayNewProject = (project) => {
     const sidebarProjects = document.querySelector('.projects');
     
     const button = document.createElement('button');
     button.classList.add('menu-item');
-    button.textContent = nameProject;
+    button.textContent = project.title;
+
     button.addEventListener('click', () => {
-      loadProjectPage(nameProject);
+      loadProjectPage(project.title);
     });
 
     sidebarProjects.appendChild(button);
   }
 
-  const addNewTask = (newTask) => {
+  const displayNewTask = (newTask) => {
     const tasksContainer = document.querySelector('#tasks');
-    tasksContainer.appendChild(taskItem(newTask));
+    tasksContainer.appendChild(TaskItem(newTask));
   }
+
+  const displayAllTasks = (tasks) => {  
+    tasks.forEach(element => {
+      displayNewTask(element);  
+    });
+  };
   
-  return { addNewProject, addNewTask };
+  const displayAllProjects = (projects) => { 
+    projects.forEach(element => {
+      displayNewProject(element);  
+    });
+  };
+
+  return { displayNewProject, displayNewTask, displayAllTasks, displayAllProjects };
 })();
 
 export default display;

@@ -1,6 +1,9 @@
+import display from "./display";
+import { projectManager } from "./projects";
 import { loadInboxPage, loadTodayPage, loadWeekPage } from "./sections";
 
 const selectMode = document.querySelector('.select-mode');
+
 const inbox = document.querySelector('#inbox')
 const today = document.querySelector('#today');
 const week = document.querySelector('#thisweek');
@@ -12,6 +15,7 @@ let selectedElement = null;
 document.addEventListener("DOMContentLoaded", () => {
   handleMenuItem(inbox);
   loadInboxPage();
+  display.displayAllProjects(projectManager.getProjects());
 });
 
 selectMode.addEventListener("click", () => {

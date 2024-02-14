@@ -123,3 +123,9 @@ nav.sidebar { /* Changed from div.sidebar to nav.sidebar */
     margin: 0 auto;
     padding: 48px 90px;
 }
+
+#tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

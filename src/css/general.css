@@ -94,7 +94,7 @@ textarea {
   padding: 8px;
 }
 
-.form-project {
+.project-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -131,4 +131,9 @@ textarea {
 
 .check.completed {
   border-color: green; 
+}
+
+.description {
+  font-size: 0.875rem;
+  color: #9B9B9B;
 }
